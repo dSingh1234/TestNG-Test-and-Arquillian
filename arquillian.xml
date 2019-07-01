@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+  #%L
+  Reference Plugin
+  %%
+  Copyright (C) 2015 - 2016 Adaptavist.com Ltd
+  %%
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+       http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  #L%
+  -->
+
+<arquillian xmlns="http://jboss.org/schema/arquillian"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd">
+
+    <container qualifier="jira" default="true">
+        <configuration>
+            <property name="app">jira</property>
+        </configuration>
+    </container>
+
+    <extension qualifier="webdriver">
+        <property name="browser">${browser}</property>
+
+        <!-- Chrome specific -->
+        <property name="chromeDriverBinary">${webdriver.chrome.driver}</property>
+
+        <!-- SauceLabs specific -->
+        <property name="username">${saucelabs.username}</property>
+        <property name="access.key">${saucelabs.accesskey}</property>
+        <property name="browserName">${saucelabs.browser.name}</property>
+        <property name="version">${saucelabs.browser.version}</property>
+        <property name="platform">${saucelabs.browser.platform}</property>
+        <property name="build">${saucelabs.build.key}</property>
+        <property name="tunnelIdentifier">${saucelabs.build.key}</property>
+    </extension>
+
+    <extension qualifier="graphene">
+        <property name="waitAjaxInterval">10</property>
+        <property name="waitGuardInterval">60</property>
+    </extension>
+</arquillian>
